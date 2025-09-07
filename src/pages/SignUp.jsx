@@ -32,11 +32,18 @@ const SignUp = () => {
                 Full Name <span className="text-red-500">*</span>
               </label>
               <input
-                type="text"
-                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-gray-500 focus:border-transparent"
-                placeholder="Enter your full name"
-                defaultValue="Demo User"
-              />
+  type="text"
+  className="w-full px-3 py-2 border 
+             border-gray-300 dark:border-gray-700 
+             rounded-md 
+             bg-white dark:bg-gray-900 
+             text-gray-900 dark:text-gray-100 
+             placeholder-gray-400 dark:placeholder-gray-500
+             focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+
+              placeholder="Full Name"
+/>
+
             </div>
 
             <div className="space-y-2">
@@ -44,11 +51,17 @@ const SignUp = () => {
                 Username <span className="text-red-500">*</span>
               </label>
               <input
-                type="text"
-                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-gray-500 focus:border-transparent"
-                placeholder="Choose a username"
-                defaultValue="demo-user"
-              />
+  type={showPassword ? 'text' : 'password'}
+  className="w-full px-3 py-2 pr-10 border 
+             border-gray-300 dark:border-gray-700 
+             rounded-md 
+             bg-white dark:bg-gray-900 
+             text-gray-900 dark:text-gray-100 
+             placeholder-gray-400 dark:placeholder-gray-500
+             focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              placeholder="User name"
+/>
+
             </div>
 
             <div className="space-y-2">
@@ -56,11 +69,17 @@ const SignUp = () => {
                 Email <span className="text-red-500">*</span>
               </label>
               <input
-                type="email"
-                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-gray-500 focus:border-transparent"
-                placeholder="Enter your email"
-                defaultValue="demo@wacman.com"
-              />
+    type="email"
+    className="w-full px-3 py-2 border 
+               border-gray-300 dark:border-gray-700 
+               rounded-md 
+               bg-white dark:bg-gray-900 
+               text-gray-900 dark:text-gray-100 
+               placeholder-gray-400 dark:placeholder-gray-500
+               focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+    placeholder="Enter your email"
+    defaultValue="demo@wacman.com"
+  />
             </div>
 
             <div className="space-y-2">
@@ -69,11 +88,17 @@ const SignUp = () => {
               </label>
               <div className="relative">
                 <input
-                  type={showPassword ? 'text' : 'password'}
-                  className="w-full px-3 py-2 pr-10 border border-gray-300 rounded-md focus:ring-2 focus:ring-gray-500 focus:border-transparent"
-                  placeholder="Create a password"
-                  defaultValue="password123"
-                />
+      type={showPassword ? 'text' : 'password'}
+      className="w-full px-3 py-2 pr-10 border 
+                 border-gray-300 dark:border-gray-700 
+                 rounded-md 
+                 bg-white dark:bg-gray-900 
+                 text-gray-900 dark:text-gray-100 
+                 placeholder-gray-400 dark:placeholder-gray-500
+                 focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+      placeholder="Create a password"
+      defaultValue="password123"
+    />
                 <button
                   type="button"
                   onClick={() => setShowPassword(!showPassword)}
@@ -89,12 +114,18 @@ const SignUp = () => {
                 Confirm Password <span className="text-red-500">*</span>
               </label>
               <div className="relative">
-                <input
-                  type={showConfirmPassword ? 'text' : 'password'}
-                  className="w-full px-3 py-2 pr-10 border border-gray-300 rounded-md focus:ring-2 focus:ring-gray-500 focus:border-transparent"
-                  placeholder="Confirm your password"
-                  defaultValue="password123"
-                />
+                 <input
+      type={showConfirmPassword ? 'text' : 'password'}
+      className="w-full px-3 py-2 pr-10 border 
+                 border-gray-300 dark:border-gray-700 
+                 rounded-md 
+                 bg-white dark:bg-gray-900 
+                 text-gray-900 dark:text-gray-100 
+                 placeholder-gray-400 dark:placeholder-gray-500
+                 focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+      placeholder="Confirm your password"
+      defaultValue="password123"
+    />
                 <button
                   type="button"
                   onClick={() => setShowConfirmPassword(!showConfirmPassword)}
@@ -126,14 +157,14 @@ const SignUp = () => {
             <button
               type="button"
               onClick={handleDemoSignUp}
-              className="w-full bg-gray-700 text-white py-3 rounded-lg hover:bg-gray-900 transition-colors font-medium"
+              className="w-full bg-blue-700 dark:bg-gray-900 text-white py-3 rounded-lg hover:bg-blue-800 dark:hover:bg-gray-950 transition-colors font-medium"
             >
               Create Account (Demo)
             </button>
           </form>
 
           {/* Demo Info */}
-          <div className="mt-6 p-4 bg-blue-50 dark:bg-gray-600 rounded-lg border border-blue-200 dark:border-gray-700">
+          <div className="mt-6 p-4 bg-blue-50 dark:bg-gray-700 rounded-lg border border-blue-200 dark:border-gray-700">
             <h3 className="text-sm font-medium text-blue-800 dark:text-gray-100 mb-2">Demo Mode:</h3>
             <div className="space-y-1 text-xs text-blue-700 dark:text-gray-300">
               <div>• This is a static UI demonstration</div>

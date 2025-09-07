@@ -33,7 +33,7 @@ const AdminPanel = () => {
 
   return (
     <div className="p-4 max-w-5xl mx-auto">
-      <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-50 mb-6">Admin Panel</h2>
+      <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-50 mb-6 mt-3">Admin Panel</h2>
 
       <div className="overflow-x-auto bg-white shadow-md rounded-lg">
         <table className="min-w-full divide-y divide-gray-200">

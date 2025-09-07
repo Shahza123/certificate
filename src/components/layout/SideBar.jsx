@@ -43,18 +43,38 @@ const SideBar = ({ isOpen, toggleSidebar }) => {
       } flex flex-col items-center`}
     >
       {/* Sidebar Toggle Button */}
-      <button
-        onClick={toggleSidebar}
-        className={
-          isOpen
-            ? "absolute top-4 right-4 z-50 p-2 bg-gray-100 rounded-md hover:bg-gray-200 focus:outline-none text-gray-800"
-            : "mt-4 p-2 bg-gray-100 rounded-md hover:bg-gray-200 focus:outline-none text-gray-700"
-        }
-      >
-        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-        </svg>
-      </button>
+{/* Sidebar Toggle Button */}
+<button
+  onClick={toggleSidebar}
+  className={
+    isOpen
+      ? "absolute top-4 right-4 z-50 p-2 rounded-md focus:outline-none " +
+        "bg-gray-100 dark:bg-gray-600 " +
+        "hover:bg-gray-200 dark:hover:bg-gray-700 " +
+        "text-gray-800 dark:text-gray-200"
+      : "mt-4 p-2 rounded-md focus:outline-none " +
+        "bg-gray-100 dark:bg-gray-600 " +
+        "hover:bg-gray-200 dark:hover:bg-gray-700 " +
+        "text-gray-700 dark:text-gray-200"
+  }
+>
+  <svg
+    className="w-6 h-6"
+    fill="none"
+    stroke="currentColor"
+    viewBox="0 0 24 24"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      strokeWidth={2}
+      d="M4 6h16M4 12h16M4 18h16"
+    />
+  </svg>
+</button>
+
+
       
       {/* Logo/Brand */}
       <div className={`${isOpen ? 'mt-16' : 'mt-5'} mb-8`}>
@@ -94,9 +114,12 @@ const SideBar = ({ isOpen, toggleSidebar }) => {
             <li key={link.to} className="w-full">
               <Link
                 to={link.to}
-                className={`flex items-center gap-3 p-3 rounded-md hover:bg-zinc-200 dark:hover:bg-gray-700 transition w-full${
-                  location.pathname === link.to ? "bg-slate-600 dark:bg-slate-600 text-gray-900 dark:text-gray-50"  : "text-gray-900 dark:text-gray-50  hover:text-gray-900 dark:hover:text-white"
-                } ${isOpen ? 'justify-start' : 'justify-center'}`}
+               className={`flex items-center gap-3 p-3 rounded-md hover:bg-zinc-200 dark:hover:bg-gray-700 transition w-full ${
+  location.pathname === link.to
+    ? "bg-slate-200 dark:bg-slate-600 text-gray-900 dark:text-gray-50"
+    : "text-gray-900 dark:text-gray-50 hover:text-gray-900 dark:hover:text-white"
+} ${isOpen ? "justify-start" : "justify-center"}`}
+
               >
                 <span className="w-5 h-5 flex items-center justify-center">{link.icon}</span>
                 {isOpen && <span className="text-sm font-medium">{link.label}</span>}

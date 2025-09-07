@@ -142,7 +142,7 @@ const IssueCertificate = () => {
     <div className="max-w-4xl mx-auto">
       {/* Header */}
       <div className="text-center mb-8">
-        <div className="inline-flex items-center justify-center w-16 h-16 bg-blue-100 rounded-full mb-4">
+        <div className="inline-flex items-center justify-center w-16 h-16 bg-blue-100 rounded-full mb-4 mt-5">
           <Shield className="w-8 h-8 text-blue-600" />
         </div>
         <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-2">
@@ -154,112 +154,125 @@ const IssueCertificate = () => {
       </div>
 
       {/* Form */}
-      <div className="bg-white dark:bg-gray-800  text-gray-700 dark:text-gray-50 rounded-xl shadow-sm border border-gray-200 p-8">
+      <div className="bg-white dark:bg-gray-800  text-gray-700 dark:text-gray-50 rounded-xl shadow-sm border border-blue-100 dark:border-gray-900 p-8">
         <form onSubmit={handleSubmit} className="space-y-6">
           {/* STEP-CA Service Configuration */}
-          <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 mb-6">
+          <div className="bg-blue-50 dark:bg-gray-900 border border-blue-200 dark:border-gray-800 shadow-xl rounded-lg p-4 mb-6">
             <div className="flex items-start">
-              <Server className="w-5 h-5 text-blue-600 mt-0.5 mr-3 flex-shrink-0" />
-              <div className="text-sm text-blue-800">
+              <Server className="w-5 h-5 text-blue-600  dark:text-gray-50  mt-0.5 mr-3 flex-shrink-0" />
+              <div className="text-sm text-blue-800 dark:text-gray-50">
                 <p className="font-medium mb-1">STEP-CA Service Configuration:</p>
-                <p className="text-blue-700">Service running on Linux OS at: <strong>{formData.stepCAService}</strong></p>
+                <p className="text-blue-700 dark:text-gray-200">Service running on Linux OS at: <strong>{formData.stepCAService}</strong></p>
               </div>
             </div>
           </div>
 
-          {/* Certificate Type Display */}
-          <div className="bg-green-50 border border-green-200 rounded-lg p-4">
-            <div className="flex items-center">
-              <Shield className="w-5 h-5 text-green-600 mr-3" />
-              <div>
-                <p className="font-medium text-green-800">Certificate Type: CA-Signed (STEP-CA)</p>
-                <p className="text-sm text-green-700">All certificates are automatically signed by the STEP-CA service</p>
-              </div>
-            </div>
-          </div>
+      {/* Certificate Type Display */}
+<div className="bg-green-50 dark:bg-gray-900 border border-green-200 dark:border-gray-800 shadow-xl rounded-lg p-4">
+  <div className="flex items-center">
+    <Shield className="w-5 h-5 text-green-600 dark:text-green-400 mr-3" />
+    <div>
+      <p className="font-medium text-green-800 dark:text-green-300">
+        Certificate Type: CA-Signed (STEP-CA)
+      </p>
+      <p className="text-sm text-green-700 dark:text-gray-200">
+        All certificates are automatically signed by the STEP-CA service
+      </p>
+    </div>
+  </div>
+</div>
 
-          {/* Predefined Host Selection */}
-          <div className="space-y-2">
-            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">
-              Select Host Type <span className="text-red-500">*</span>
-            </label>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
-              {predefinedHosts.map((host) => (
-                <button
-                  key={host.value}
-                  type="button"
-                  onClick={() => handleChange({ target: { name: 'predefinedHost', value: host.value } })}
-                  className={`p-3 border rounded-lg text-left transition-colors ${
-                    formData.hostname === host.value 
-                      ? 'border-blue-500 bg-blue-50 text-blue-700' 
-                      : 'border-gray-300 hover:border-gray-400'
-                  }`}
-                >
-                  <div className="flex items-center gap-2 ">
-                    {host.icon}
-                    <span className="text-sm font-medium ">{host.label}</span>
-                  </div>
-                </button>
-              ))}
-            </div>
-          </div>
+{/* Predefined Host Selection */}
+<div className="space-y-2">
+  <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">
+    Select Host Type <span className="text-red-500">*</span>
+  </label>
+  <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
+    {predefinedHosts.map((host) => (
+      <button
+        key={host.value}
+        type="button"
+        onClick={() =>
+          handleChange({ target: { name: 'predefinedHost', value: host.value } })
+        }
+        className={`p-3 border rounded-lg text-left transition-colors ${
+          formData.hostname === host.value
+            ? 'border-blue-500 bg-blue-50 text-blue-700 dark:border-blue-400 dark:bg-blue-900 dark:text-blue-300'
+            : 'border-gray-300 hover:border-gray-400 dark:border-gray-700 dark:text-gray-200 dark:hover:border-gray-500'
+        }`}
+      >
+        <div className="flex items-center gap-2">
+          {host.icon}
+          <span className="text-sm font-medium">{host.label}</span>
+        </div>
+      </button>
+    ))}
+  </div>
+</div>
 
-          {/* Hostname/IP Field */}
-          <FormField
-            label="Hostname/IP Address"
-            name="hostname"
-            type="text"
-            value={formData.hostname}
-            onChange={handleChange}
-            error={errors.hostname}
-            required
-            placeholder="Enter IP address, domain, or localhost"
-            className="col-span-2"
-          />
+{/* Hostname/IP Field */}
+<FormField
+  label="Hostname/IP Address"
+  name="hostname"
+  type="text"
+  value={formData.hostname}
+  onChange={handleChange}
+  error={errors.hostname}
+  required
+  placeholder="Enter IP address, domain, or localhost"
+  className="col-span-2"
+/>
 
-          {/* Validity Period */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <FormField
-              label="Validity Period"
-              name="validityPeriod"
-              type="select"
-              value={formData.validityPeriod}
-              onChange={handleChange}
-              options={validityPeriodOptions}
-              required
-            />
+{/* Validity Period */}
+<div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+  <FormField
+    label="Validity Period"
+    name="validityPeriod"
+    type="select"
+    value={formData.validityPeriod}
+    onChange={handleChange}
+    options={validityPeriodOptions}
+    required
+  />
 
-            <div className="space-y-2 text-gray-700 dark:text-gray-300">
-              <label className="block text-sm font-medium">
-                STEP-CA Service Endpoint
-              </label>
-              <input
-                type="text"
-                name="stepCAService"
-                value={formData.stepCAService}
-                onChange={handleChange}
-                className="w-full  px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                placeholder="localhost:9000"
-              />
-            </div>
-          </div>
+  <div className="space-y-2 text-gray-700 dark:text-gray-300">
+    <label className="block text-sm font-medium">
+      STEP-CA Service Endpoint
+    </label>
+    <input
+      type="text"
+      name="stepCAService"
+      value={formData.stepCAService}
+      onChange={handleChange}
+      className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent dark:bg-gray-800 dark:border-gray-700 dark:text-gray-200"
+      placeholder="localhost:9000"
+    />
+  </div>
+</div>
 
-          {/* Automatic Key Size Display */}
-          <div className="bg-gray-50 dark:bg-gray-900 border border-gray-200 rounded-lg p-4">
-            <div className="flex items-center justify-between">
-              <div>
-                <h4 className="font-medium text-gray-800 dark:text-white">Key Size (Automatic)</h4>
-                <p className="text-sm text-gray-600 dark:text-gray-300">Standard 2048-bit RSA key for CA-signed certificates</p>
-              </div>
-              <div className="text-right">
-                <span className="text-lg font-bold text-blue-600">{getKeySize()} bits</span>
-                <p className="text-xs text-gray-500 dark:text-gray-300">RSA</p>
-              </div>
-            </div>
-          </div>
+{/* Automatic Key Size Display */}
+<div className="bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-800 shadow-md rounded-lg p-4">
+  <div className="flex items-center justify-between">
+    <div>
+      <h4 className="font-medium text-gray-800 dark:text-gray-100">
+        Key Size (Automatic)
+      </h4>
+      <p className="text-sm text-gray-600 dark:text-gray-400">
+        Standard 2048-bit RSA key for CA-signed certificates
+      </p>
+    </div>
+    <div className="text-right">
+      <span className="text-lg font-bold text-blue-600 dark:text-blue-400">
+        {getKeySize()} bits
+      </span>
+      <p className="text-xs text-gray-500 dark:text-gray-400">RSA</p>
+    </div>
+  </div>
+</div>
+
 
           {/* Certificate Details Preview */}
-          <div className="bg-blue-50 dark:bg-gray-900  border border-blue-200 rounded-lg p-4">
+          <div className="bg-blue-50 dark:bg-gray-900  border border-blue-200 dark:border-gray-900 shadow-md rounded-lg p-4">
             <div className="flex items-start">
               <FileText className="w-5 h-5 text-blue-600 dark:text-gray-100 mt-0.5 mr-3 flex-shrink-0" />
               <div className="text-sm text-blue-800 dark:text-gray-50">

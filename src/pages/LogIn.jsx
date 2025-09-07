@@ -30,12 +30,17 @@ const LogIn = () => {
               <label className="block text-sm font-medium text-gray-700 dark:text-gray-50">
                 Username <span className="text-red-500">*</span>
               </label>
-              <input
-                type="text"
-                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-gray-500 focus:border-transparent"
-                placeholder="Enter your username"
-                defaultValue="demo-user"
-              />
+     <input
+  type="text"
+  className="w-full px-3 py-2 border border-gray-300 dark:border-gray-700 
+             rounded-md bg-white dark:bg-gray-900 
+             text-gray-900 dark:text-gray-100
+             placeholder-gray-400 dark:placeholder-gray-500
+             focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+               placeholder=" Full Name"
+/>
+
+
             </div>
 
             <div className="space-y-2">
@@ -44,11 +49,15 @@ const LogIn = () => {
               </label>
               <div className="relative">
                 <input
-                  type={showPassword ? 'text' : 'password'}
-                  className="w-full px-3 py-2 pr-10 border border-gray-300 rounded-md focus:ring-2 focus:ring-gray-500 focus:border-transparent"
-                  placeholder="Enter your password"
-                  defaultValue="password"
-                />
+  type={showPassword ? 'text' : 'password'}
+  className="w-full px-3 py-2 pr-10 border border-gray-300 dark:border-gray-700 
+             rounded-md bg-white dark:bg-gray-900 
+             text-gray-900 dark:text-gray-100
+             placeholder-gray-400 dark:placeholder-gray-500
+             focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+               placeholder=" User name"
+/>
+
                 <button
                   type="button"
                   onClick={() => setShowPassword(!showPassword)}
@@ -76,14 +85,14 @@ const LogIn = () => {
             <button
               type="button"
               onClick={handleDemoLogin}
-              className="w-full bg-gray-700 text-white py-3 rounded-lg hover:bg-gray-900 transition-colors font-medium"
+              className="w-full bg-blue-700 dark:bg-gray-900 text-white py-3 rounded-lg hover:bg-blue-800 dark:hover:bg-gray-950 transition-colors font-medium"
             >
               Sign In (Demo)
             </button>
           </form>
 
           {/* Demo Credentials */}
-          <div className="mt-6 p-4 bg-blue-50 dark:bg-gray-600 rounded-lg border border-blue-200 dark:border-gray-700">
+          <div className="mt-6 p-4 bg-blue-50 dark:bg-gray-700 rounded-lg border border-blue-200 dark:border-gray-700">
             <h3 className="text-sm font-medium text-blue-800 dark:text-gray-100 mb-2">Demo Mode:</h3>
             <div className="space-y-1 text-xs text-blue-700 dark:text-gray-300">
               <div>• This is a static UI demonstration</div>

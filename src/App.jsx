@@ -26,7 +26,7 @@ function DashboardLayout() {
   const sidebarWidth = isSidebarOpen ? 250 : 64;
   
   return (
-    <div className="h-screen w-screen relative bg-gray-100 dark:bg-gray-900">
+    <div className="h-screen-full w-screen relative bg-gray-100 dark:bg-gray-900">
       <SideBar isOpen={isSidebarOpen} toggleSidebar={toggleSidebar} />
       <div style={{ marginLeft: sidebarWidth }} className="transition-all duration-300">
         <NavBar sidebarWidth={sidebarWidth} />

@@ -86,7 +86,7 @@ const Dashboard = () => {
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between">
         <div>
-          <h1 className="text-3xl font-bold text-gray-900 dark:text-gray-50 ml-4">SSL Certificate Dashboard</h1>
+          <h1 className="text-3xl font-bold text-gray-900 dark:text-gray-50 ml-4 mt-4">SSL Certificate Dashboard</h1>
           <p className="text-gray-600 dark:text-gray-300 ml-4 mt-2">Manage and monitor your SSL certificate infrastructure</p>
         </div>
         <div className="mt-4 sm:mt-0">
@@ -103,7 +103,7 @@ const Dashboard = () => {
           <a
             key={index}
             href={action.link}
-            className="bg-white dark:bg-slate-700  p-6  rounded-xl shadow-sm hover:shadow-md transition-shadow border border-gray-100 group"
+            className="bg-white dark:bg-slate-700  p-6  rounded-xl shadow-sm hover:shadow-md transition-shadow border border-gray-100 dark:border-gray-900 group"
           >
             <div className={`inline-flex p-3 rounded-lg text-white mb-4 ${action.color}`}>
               {action.icon}
@@ -118,7 +118,7 @@ const Dashboard = () => {
 
       {/* Statistics Cards */}
       <div className=" grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        <div className="bg-white dark:bg-slate-700  p-6 rounded-xl shadow-sm border border-gray-100">
+        <div className="bg-white dark:bg-slate-700  p-6 rounded-xl shadow-sm border border-gray-100 dark:border-gray-900">
           <div className="flex items-center justify-between">
             <div>
               <p className="text-sm font-medium text-gray-600 dark:text-gray-300">Total Certificates</p>
@@ -137,7 +137,7 @@ const Dashboard = () => {
           </div>
         </div>
 
-        <div className="bg-white dark:bg-slate-700  p-6 rounded-xl shadow-sm border border-gray-100">
+        <div className="bg-white dark:bg-slate-700  p-6 rounded-xl shadow-sm border border-gray-100 dark:border-gray-900">
           <div className="flex items-center justify-between">
             <div>
               <p className="text-sm font-medium text-gray-600 dark:text-gray-300">System Status</p>
@@ -155,7 +155,7 @@ const Dashboard = () => {
           </div>
         </div>
 
-        <div className="bg-white dark:bg-slate-700 p-6 rounded-xl shadow-sm border border-gray-100">
+        <div className="bg-white dark:bg-slate-700 p-6 rounded-xl shadow-sm border border-gray-100 dark:border-gray-900">
           <div className="flex items-center justify-between">
             <div>
               <p className="text-sm font-medium text-gray-600 dark:text-gray-300">Pending Actions</p>
@@ -174,7 +174,7 @@ const Dashboard = () => {
       </div>
 
       {/* Recent Certificates */}
-      <div className="bg-white dark:bg-slate-700  rounded-xl shadow-sm border border-gray-100">
+      <div className="bg-white dark:bg-slate-700  rounded-xl shadow-sm border border-gray-100 dark:border-gray-900">
         <div className="p-6 border-b border-gray-100">
           <div className="flex items-center justify-between">
             <h2 className="text-xl font-semibold text-gray-900 dark:text-gray-300">Recent Certificates</h2>
@@ -246,7 +246,7 @@ const Dashboard = () => {
 
       {/* System Information */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        <div className="bg-white dark:bg-slate-700  p-6 rounded-xl shadow-sm border border-gray-100">
+        <div className="bg-white dark:bg-slate-700  p-6 rounded-xl shadow-sm border border-gray-100 dark:border-gray-900">
           <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-300 mb-4">STEP-CA Service Status</h3>
           <div className="space-y-3">
             <div className="flex items-center justify-between">
@@ -266,7 +266,7 @@ const Dashboard = () => {
           </div>
         </div>
 
-        <div className="bg-white dark:bg-slate-700  p-6 rounded-xl shadow-sm border border-gray-100">
+        <div className="bg-white dark:bg-slate-700  p-6 rounded-xl shadow-sm border border-gray-100 dark:border-gray-900">
           <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-300 mb-4">Quick Statistics</h3>
           <div className="space-y-3">
             <div className="flex items-center justify-between">
