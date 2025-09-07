@@ -5,17 +5,17 @@ import { ThemeProvider } from "./theme/theme-provider";
 // Pages
 import LogIn from "./pages/LogIn";
 import Dashboard from "./pages/Dashboard";
-import RevokeCertificate from "./pages/RevokeCertificate";
-import Progress from "./pages/Progress";
-import Results from "./pages/Results";
+
+
+
 import AdminPanel from "./components/AdminPanel";
 import SignUp from "./pages/SignUp";
 import NavBar from "./components/layout/NavBar";
 import SideBar from "./components/layout/SideBar";
 import ViewCertificate from "./pages/ViewCertificate";
-import PreViewCertificate from "./pages/PreViewCertificate";
-import ActiveCertificates from "./pages/ActiveCertificates";
-import ExpiryCertificates from "./pages/ExpiryCertificates";
+
+
+
 import IssueCertificate from "./pages/IssueCertificate";
 import Certificates from "./pages/Certificates";
 // import { ThemeProvider } from "./theme/theme-provider";
@@ -26,7 +26,7 @@ function DashboardLayout() {
   const sidebarWidth = isSidebarOpen ? 250 : 64;
   
   return (
-    <div className="h-screen-full w-screen relative bg-gray-100 dark:bg-gray-900">
+    <div className="h-screen-full w-full relative bg-gray-100 dark:bg-gray-900">
       <SideBar isOpen={isSidebarOpen} toggleSidebar={toggleSidebar} />
       <div style={{ marginLeft: sidebarWidth }} className="transition-all duration-300">
         <NavBar sidebarWidth={sidebarWidth} />
@@ -41,14 +41,7 @@ function DashboardLayout() {
             <Route path="logout" element={<Dashboard />} />
             
             {/* Legacy routes for backward compatibility */}
-            <Route path="revoke" element={<RevokeCertificate />} />
-            <Route path="progress" element={<Progress />} />
-            <Route path="results" element={<Results />} />
-            <Route path="view-certificate" element={<ViewCertificate />} />
-            <Route path="active-certificates" element={<ActiveCertificates/>} />
-            <Route path="expiry-certificates" element={<ExpiryCertificates />} />
-            <Route path="preview-certificate" element={<PreViewCertificate />} />
-            <Route path="admin" element={<AdminPanel />} />
+            
           </Routes>
         </main>
       </div>

@@ -235,7 +235,7 @@ const IssueCertificate = () => {
     required
   />
 
-  <div className="space-y-2 text-gray-700 dark:text-gray-300">
+  {/* <div className="space-y-2 text-gray-700 dark:text-gray-300">
     <label className="block text-sm font-medium">
       STEP-CA Service Endpoint
     </label>
@@ -247,7 +247,7 @@ const IssueCertificate = () => {
       className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent dark:bg-gray-800 dark:border-gray-700 dark:text-gray-200"
       placeholder="localhost:9000"
     />
-  </div>
+  </div> */}
 </div>
 
 {/* Automatic Key Size Display */}
@@ -316,7 +316,7 @@ const IssueCertificate = () => {
       </div>
 
       {/* Prototype Requirements Section */}
-      <div className="mt-8 bg-green-50 dark:bg-gray-700 rounded-xl p-6">
+      {/* <div className="mt-8 bg-green-50 dark:bg-gray-700 rounded-xl p-6">
         <h3 className="text-lg font-semibold text-green-900 dark:text-white mb-4">Prototype Requirements Met</h3>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div>
@@ -336,10 +336,10 @@ const IssueCertificate = () => {
             </ul>
           </div>
         </div>
-      </div>
+      </div> */}
 
       {/* Help Section */}
-      <div className="mt-8 bg-gray-50 dark:bg-gray-700 rounded-xl p-6">
+      {/* <div className="mt-8 bg-gray-50 dark:bg-gray-700 rounded-xl p-6">
         <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">Need Help?</h3>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div>
@@ -359,7 +359,7 @@ const IssueCertificate = () => {
             </ul>
           </div>
         </div>
-      </div>
+      </div> */}
     </div>
   );
 };

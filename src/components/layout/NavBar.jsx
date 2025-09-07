@@ -1,12 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import {
-  Bell,
-  ChevronDown,
-  User,
-  Settings,
-  Shield,
-} from "lucide-react";
+import { Bell, ChevronDown, User, Settings, Shield } from "lucide-react";
 import ModeToggle from "../mode-toggle";
 
 const NavBar = ({ sidebarWidth = 250 }) => {
@@ -58,20 +52,21 @@ const NavBar = ({ sidebarWidth = 250 }) => {
       className="fixed top-0 z-50 bg-gray-50 dark:bg-gray-800 text-foreground shadow-sm border-b border-gray-200 dark:border-gray-800"
       style={{ left: sidebarWidth, right: 0 }}
     >
-      <div className="flex items-center justify-between px-6 py-4">
+      <div className="flex items-center justify-between px-4 sm:px-6 py-3 sm:py-4">
         {/* Left Section - Page Title */}
-        <div className="flex items-center">
-          <div className="flex items-center gap-3">
-            <div className="p-2 bg-blue-100 dark:bg-blue-900 rounded-lg">
-              <Shield className="w-5 h-5 text-blue-600 dark:text-blue-300" />
-            </div>
-            <h1 className="text-2xl font-bold">Generate SSL Certificate</h1>
+        <div className="flex items-center gap-3">
+          <div className="p-2 bg-blue-100 dark:bg-blue-900 rounded-lg">
+            <Shield className="w-5 h-5 text-blue-600 dark:text-blue-300" />
           </div>
+         <h1 className="text-lg sm:text-xl lg:text-2xl font-bold truncate 
+               max-w-[150px] sm:max-w-[250px] lg:max-w-none">
+  Generate SSL Certificate
+</h1>
         </div>
 
         {/* Right Section */}
-        <div className="flex items-center gap-4">
-          {/* Dark Mode Toggle (only this one) */}
+        <div className="flex items-center gap-2 sm:gap-4">
+          {/* Dark Mode Toggle */}
           <ModeToggle />
 
           {/* Notification Icon */}
@@ -84,7 +79,7 @@ const NavBar = ({ sidebarWidth = 250 }) => {
           <div className="relative">
             <button
               onClick={() => setDropdownOpen(!dropdownOpen)}
-              className="flex items-center gap-2 p-2 bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-200 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors focus:outline-none"
+              className="flex items-center gap-1 sm:gap-2 p-2 bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-200 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors focus:outline-none"
             >
               <div
                 className={`w-8 h-8 flex items-center justify-center rounded-full text-white font-semibold text-sm ${getRoleColor(
@@ -93,12 +88,13 @@ const NavBar = ({ sidebarWidth = 250 }) => {
               >
                 {getUserInitials(mockUser.name)}
               </div>
-              <span className="text-sm font-medium">{mockUser.name}</span>
+              {/* Hide name on small screens */}
+              <span className="hidden sm:inline text-sm font-medium">{mockUser.name}</span>
               <ChevronDown className="w-4 h-4" />
             </button>
 
             {dropdownOpen && (
-              <div className="absolute right-0 mt-2 w-64 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 shadow-lg rounded-lg z-50">
+              <div className="absolute right-0 mt-2 w-full max-w-xs bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 shadow-lg rounded-lg z-50">
                 {/* User Info Header */}
                 <div className="px-4 py-3 border-b border-gray-100 dark:border-gray-700 bg-gray-50 dark:bg-gray-800">
                   <p className="text-sm font-medium">{mockUser.name}</p>
