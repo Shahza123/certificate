@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { ThemeProvider } from "./theme/theme-provider";
 
 // Pages
 import LogIn from "./pages/LogIn";
@@ -17,6 +18,7 @@ import ActiveCertificates from "./pages/ActiveCertificates";
 import ExpiryCertificates from "./pages/ExpiryCertificates";
 import IssueCertificate from "./pages/IssueCertificate";
 import Certificates from "./pages/Certificates";
+// import { ThemeProvider } from "./theme/theme-provider";
 
 function DashboardLayout() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
@@ -24,11 +26,11 @@ function DashboardLayout() {
   const sidebarWidth = isSidebarOpen ? 250 : 64;
   
   return (
-    <div className="h-screen w-screen relative bg-gray-50">
+    <div className="h-screen w-screen relative bg-white dark:bg-gray-900">
       <SideBar isOpen={isSidebarOpen} toggleSidebar={toggleSidebar} />
       <div style={{ marginLeft: sidebarWidth }} className="transition-all duration-300">
         <NavBar sidebarWidth={sidebarWidth} />
-        <main className="p-6 pt-24 min-h-screen">
+        <main className="w-full pt-20 min-h-screen">
           <Routes>
             <Route index element={<Dashboard />} />
             <Route path="dashboard" element={<Dashboard />} />
@@ -56,7 +58,12 @@ function DashboardLayout() {
 
 function App() {
   return (
-    <Router>
+    
+    
+     
+
+<ThemeProvider>
+<Router>
       <Routes>
         {/* All routes are now accessible without authentication */}
         <Route path="/" element={<DashboardLayout />} />
@@ -65,6 +72,8 @@ function App() {
         <Route path="/*" element={<DashboardLayout />} />
       </Routes>
     </Router>
+</ThemeProvider>
+    
   );
 }
 

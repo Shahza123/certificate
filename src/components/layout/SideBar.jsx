@@ -31,7 +31,7 @@ const SideBar = ({ isOpen, toggleSidebar }) => {
 
   return (
     <div
-      className={`fixed left-0 top-0 h-screen bg-gray-800 text-white transition-all duration-300 z-40 ${
+      className={`fixed left-0 top-0 h-screen bg-gray-50 dark:bg-gray-800 text-gray-900 dark:text-gray-50 transition-all duration-300 z-40 ${
         isOpen ? 'w-[250px]' : 'w-16'
       } flex flex-col items-center`}
     >
@@ -53,10 +53,10 @@ const SideBar = ({ isOpen, toggleSidebar }) => {
       <div className={`${isOpen ? 'mt-16' : 'mt-5'} mb-8`}>
         <div className="flex items-center justify-center">
           <div className="p-2 bg-blue-600 rounded-lg">
-            <Shield className="w-6 h-6 text-white" />
+            <Shield className="w-6 h-6 text-gray-900 dark:text-gray-50" />
           </div>
           {isOpen && (
-            <h1 className="ml-3 font-bold text-xl text-white">
+            <h1 className="ml-3 font-bold text-xl text-gray-900 dark:text-gray-50">
               Digital Sign Certificate
             </h1>
           )}
@@ -67,12 +67,12 @@ const SideBar = ({ isOpen, toggleSidebar }) => {
       <div className={`${isOpen ? 'w-full px-4' : 'w-full'} mb-6`}>
         <div className={`${isOpen ? 'p-3' : 'p-2'} bg-gray-700 rounded-lg`}>
           <div className="flex items-center">
-            <div className="w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center text-white font-semibold text-sm">
+            <div className="w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center text-gray-900 dark:text-gray-50 font-semibold text-sm">
               {mockUser.name.split(' ').map(word => word.charAt(0)).join('').toUpperCase().slice(0, 2)}
             </div>
             {isOpen && (
               <div className="ml-3">
-                <p className="text-sm font-medium text-white">{mockUser.name}</p>
+                <p className="text-sm font-medium text-gray-300">{mockUser.name}</p>
                 <p className="text-xs text-gray-300 capitalize">{mockUser.role}</p>
               </div>
             )}
@@ -88,7 +88,7 @@ const SideBar = ({ isOpen, toggleSidebar }) => {
               <Link
                 to={link.to}
                 className={`flex items-center gap-3 p-3 rounded-md hover:bg-gray-700 transition w-full ${
-                  location.pathname === link.to ? "bg-blue-600 text-white" : "text-gray-300 hover:text-white"
+                  location.pathname === link.to ? "bg-blue-600 text-gray-900 dark:text-gray-50" : "text-gray-900 dark:text-gray-50 hover:text-white"
                 } ${isOpen ? 'justify-start' : 'justify-center'}`}
               >
                 <span className="w-5 h-5 flex items-center justify-center">{link.icon}</span>
@@ -103,7 +103,7 @@ const SideBar = ({ isOpen, toggleSidebar }) => {
       <div className={`w-full ${isOpen ? 'px-4' : 'px-2'} pb-6`}>
         <div className={`${isOpen ? 'p-3' : 'p-2'} bg-yellow-600 rounded-lg text-center`}>
           {isOpen && (
-            <span className="text-xs font-medium text-white">Demo Mode</span>
+            <span className="text-xs font-medium text-gray-900 dark:text-gray-50">Demo Mode</span>
           )}
         </div>
       </div>

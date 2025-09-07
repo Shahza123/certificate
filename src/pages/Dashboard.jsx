@@ -82,16 +82,16 @@ const Dashboard = () => {
   ];
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-6 bg-gray-50 dark:bg-gray-900">
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between">
         <div>
-          <h1 className="text-3xl font-bold text-gray-900">SSL Certificate Dashboard</h1>
-          <p className="text-gray-600 mt-2">Manage and monitor your SSL certificate infrastructure</p>
+          <h1 className="text-3xl font-bold text-gray-900 dark:text-gray-50 ml-4">SSL Certificate Dashboard</h1>
+          <p className="text-gray-600 dark:text-gray-300 ml-4 mt-2">Manage and monitor your SSL certificate infrastructure</p>
         </div>
         <div className="mt-4 sm:mt-0">
           <span className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-green-100 text-green-800">
-            <div className="w-2 h-2 bg-green-400 rounded-full mr-2"></div>
+            <div className="w-2 h-2 bg-green-400 rounded-full mr-2 "></div>
             System Online
           </span>
         </div>
@@ -103,33 +103,33 @@ const Dashboard = () => {
           <a
             key={index}
             href={action.link}
-            className="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow border border-gray-100 group"
+            className="bg-white dark:bg-slate-700  p-6  rounded-xl shadow-sm hover:shadow-md transition-shadow border border-gray-100 group"
           >
             <div className={`inline-flex p-3 rounded-lg text-white mb-4 ${action.color}`}>
               {action.icon}
             </div>
-            <h3 className="text-lg font-semibold text-gray-900 mb-2 group-hover:text-blue-600 transition-colors">
+            <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-300 mb-2 group-hover:text-blue-600 transition-colors">
               {action.title}
             </h3>
-            <p className="text-sm text-gray-600">{action.description}</p>
+            <p className="text-sm text-gray-600 dark:text-gray-50">{action.description}</p>
           </a>
         ))}
       </div>
 
       {/* Statistics Cards */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+      <div className=" grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="bg-white dark:bg-slate-700  p-6 rounded-xl shadow-sm border border-gray-100">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-sm font-medium text-gray-600">Total Certificates</p>
-              <p className="text-3xl font-bold text-gray-900">{stats.totalCertificates}</p>
+              <p className="text-sm font-medium text-gray-600 dark:text-gray-300">Total Certificates</p>
+              <p className="text-3xl font-bold text-gray-900 dark:text-gray-50">{stats.totalCertificates}</p>
             </div>
             <div className="p-3 bg-blue-100 rounded-lg">
               <ShieldCheck className="w-6 h-6 text-blue-600" />
             </div>
           </div>
           <div className="mt-4">
-            <div className="flex items-center text-sm text-gray-600">
+            <div className="flex items-center text-sm text-gray-600 dark:text-gray-50">
               <span className="text-green-600 font-medium">{stats.activeCertificates} Active</span>
               <span className="mx-2">•</span>
               <span className="text-red-600 font-medium">{stats.expiredCertificates} Expired</span>
@@ -137,29 +137,29 @@ const Dashboard = () => {
           </div>
         </div>
 
-        <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+        <div className="bg-white dark:bg-slate-700  p-6 rounded-xl shadow-sm border border-gray-100">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-sm font-medium text-gray-600">System Status</p>
-              <p className="text-3xl font-bold text-gray-900">{stats.systemUptime}</p>
+              <p className="text-sm font-medium text-gray-600 dark:text-gray-300">System Status</p>
+              <p className="text-3xl font-bold text-gray-900 dark:text-gray-50">{stats.systemUptime}</p>
             </div>
             <div className="p-3 bg-green-100 rounded-lg">
               <CheckCircle className="w-6 h-6 text-green-600" />
             </div>
           </div>
           <div className="mt-4">
-            <div className="flex items-center text-sm text-gray-600">
+            <div className="flex items-center text-sm text-gray-600 dark:text-gray-50">
               <Clock className="w-4 h-4 mr-1" />
               Last backup: {stats.lastBackup}
             </div>
           </div>
         </div>
 
-        <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+        <div className="bg-white dark:bg-slate-700 p-6 rounded-xl shadow-sm border border-gray-100">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-sm font-medium text-gray-600">Pending Actions</p>
-              <p className="text-3xl font-bold text-gray-900">{stats.pendingValidation}</p>
+              <p className="text-sm font-medium text-gray-600 dark:text-gray-300">Pending Actions</p>
+              <p className="text-3xl font-bold text-gray-900 dark:text-gray-50">{stats.pendingValidation}</p>
             </div>
             <div className="p-3 bg-yellow-100 rounded-lg">
               <AlertTriangle className="w-6 h-6 text-yellow-600" />
@@ -174,10 +174,10 @@ const Dashboard = () => {
       </div>
 
       {/* Recent Certificates */}
-      <div className="bg-white rounded-xl shadow-sm border border-gray-100">
+      <div className="bg-white dark:bg-slate-700  rounded-xl shadow-sm border border-gray-100">
         <div className="p-6 border-b border-gray-100">
           <div className="flex items-center justify-between">
-            <h2 className="text-xl font-semibold text-gray-900">Recent Certificates</h2>
+            <h2 className="text-xl font-semibold text-gray-900 dark:text-gray-300">Recent Certificates</h2>
             <a 
               href="/certificates" 
               className="text-blue-600 hover:text-blue-700 text-sm font-medium"
@@ -187,35 +187,35 @@ const Dashboard = () => {
           </div>
         </div>
         <div className="overflow-x-auto">
-          <table className="w-full">
-            <thead className="bg-gray-50">
+          <table className=" w-full">
+            <thead className="bg-white dark:bg-slate-800 ">
               <tr>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-50 uppercase tracking-wider">
                   Hostname/IP
                 </th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-50 uppercase tracking-wider">
                   Type
                 </th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-50 uppercase tracking-wider">
                   Status
                 </th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-50 uppercase tracking-wider">
                   Expiry Date
                 </th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500  dark:text-gray-50 uppercase tracking-wider">
                   Actions
                 </th>
               </tr>
             </thead>
-            <tbody className="bg-white divide-y divide-gray-100">
+            <tbody className="bg-white dark:bg-slate-700  divide-y divide-gray-100">
               {recentCertificates.map((cert) => (
-                <tr key={cert.id} className="hover:bg-gray-50">
+                <tr key={cert.id} className="dark:hover:bg-gray-800">
                   <td className="px-6 py-4 whitespace-nowrap">
-                    <div className="text-sm font-medium text-gray-900">{cert.hostname}</div>
-                    <div className="text-sm text-gray-500">Issued: {cert.issuedDate}</div>
+                    <div className="text-sm font-medium text-gray-900 dark:text-white">{cert.hostname}</div>
+                    <div className="text-sm text-gray-500 dark:text-gray-50">Issued: {cert.issuedDate}</div>
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap">
-                    <span className="inline-flex px-2 py-1 text-xs font-semibold rounded-full bg-blue-100 text-blue-800">
+                    <span className="inline-flex px-2 py-1 text-xs font-semibold rounded-full bg-blue-100 text-gray-800">
                       {cert.type}
                     </span>
                   </td>
@@ -224,7 +224,7 @@ const Dashboard = () => {
                       {cert.status}
                     </span>
                   </td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900 dark:text-white">
                     {cert.expiryDate}
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap text-sm font-medium">
@@ -246,40 +246,40 @@ const Dashboard = () => {
 
       {/* System Information */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
-          <h3 className="text-lg font-semibold text-gray-900 mb-4">STEP-CA Service Status</h3>
+        <div className="bg-white dark:bg-slate-700  p-6 rounded-xl shadow-sm border border-gray-100">
+          <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-300 mb-4">STEP-CA Service Status</h3>
           <div className="space-y-3">
             <div className="flex items-center justify-between">
-              <span className="text-sm text-gray-600">Service Status</span>
+              <span className="text-sm text-gray-600 dark:text-gray-50">Service Status</span>
               <span className="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-green-100 text-green-800">
                 Running
               </span>
             </div>
             <div className="flex items-center justify-between">
-              <span className="text-sm text-gray-600">Port</span>
-              <span className="text-sm font-medium text-gray-900">443</span>
+              <span className="text-sm text-gray-600 dark:text-gray-50">Port</span>
+              <span className="text-sm font-medium text-gray-900 dark:text-white">443</span>
             </div>
             <div className="flex items-center justify-between">
-              <span className="text-sm text-gray-600">Last Health Check</span>
-              <span className="text-sm font-medium text-gray-900">2 minutes ago</span>
+              <span className="text-sm text-gray-600 dark:text-gray-50">Last Health Check</span>
+              <span className="text-sm font-medium text-gray-900 dark:text-white">2 minutes ago</span>
             </div>
           </div>
         </div>
 
-        <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
-          <h3 className="text-lg font-semibold text-gray-900 mb-4">Quick Statistics</h3>
+        <div className="bg-white dark:bg-slate-700  p-6 rounded-xl shadow-sm border border-gray-100">
+          <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-300 mb-4">Quick Statistics</h3>
           <div className="space-y-3">
             <div className="flex items-center justify-between">
-              <span className="text-sm text-gray-600">Total Users</span>
-              <span className="text-sm font-medium text-gray-900">156</span>
+              <span className="text-sm text-gray-600 dark:text-gray-50">Total Users</span>
+              <span className="text-sm font-medium text-gray-900 dark:text-white">156</span>
             </div>
             <div className="flex items-center justify-between">
-              <span className="text-sm text-gray-600">Active Sessions</span>
-              <span className="text-sm font-medium text-gray-900">23</span>
+              <span className="text-sm text-gray-600 dark:text-gray-50">Active Sessions</span>
+              <span className="text-sm font-medium text-gray-900 dark:text-white">23</span>
             </div>
             <div className="flex items-center justify-between">
-              <span className="text-sm text-gray-600">Storage Used</span>
-              <span className="text-sm font-medium text-gray-900">2.4 GB</span>
+              <span className="text-sm text-gray-600 dark:text-gray-50">Storage Used</span>
+              <span className="text-sm font-medium text-gray-900 dark:text-white">2.4 GB</span>
             </div>
           </div>
         </div>

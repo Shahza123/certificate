@@ -33,11 +33,11 @@ const AdminPanel = () => {
 
   return (
     <div className="p-4 max-w-5xl mx-auto">
-      <h2 className="text-3xl font-bold text-gray-700 mb-6">Admin Panel</h2>
+      <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-50 mb-6">Admin Panel</h2>
 
       <div className="overflow-x-auto bg-white shadow-md rounded-lg">
         <table className="min-w-full divide-y divide-gray-200">
-          <thead className="bg-gray-700 text-white">
+          <thead className="bg-white dark:bg-slate-800 text-gray-900 dark:text-gray-50">
             <tr>
               <th className="px-6 py-3 text-left text-sm font-semibold">User</th>
               <th className="px-6 py-3 text-left text-sm font-semibold">Email</th>
@@ -46,16 +46,16 @@ const AdminPanel = () => {
               <th className="px-6 py-3 text-left text-sm font-semibold">Actions</th>
             </tr>
           </thead>
-          <tbody className="bg-white divide-y divide-gray-100">
+          <tbody className="bg-white dark:bg-slate-700 divide-y divide-gray-100">
             {users.map((user) => (
-              <tr key={user.id} className="hover:bg-gray-50 transition">
+              <tr key={user.id} className="hover:bg-gray-800 transition">
                 <td className="px-6 py-4 flex items-center space-x-3">
                   <div className="bg-[#eee] text-gray-700 rounded-full h-10 w-10 flex items-center justify-center font-bold uppercase">
                     {user.name.charAt(0)}
                   </div>
                   <span>{user.name}</span>
                 </td>
-                <td className="px-6 py-4 text-sm text-gray-700">{user.email}</td>
+                <td className="px-6 py-4 text-sm text-gray-900 dark:text-gray-50">{user.email}</td>
                 <td className="px-6 py-4">
                   <span className={`px-3 py-1 text-xs rounded-full font-medium ${getRoleColor(user.role)}`}>
                     {user.role}
