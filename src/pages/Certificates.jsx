@@ -110,7 +110,7 @@ const Certificates = () => {
             </thead>
             <tbody className="bg-white dark:bg-slate-700 divide-y divide-gray-200">
               {filteredCertificates.map((cert) => (
-                <tr key={cert.id} className="hover:bg-gray-800">
+                <tr key={cert.id} className=" hover:bg-gray-50 dark:hover:bg-gray-800">
                   <td className="px-6 py-4 whitespace-nowrap">
                     <div className="text-sm font-medium text-gray-900 dark:text-white">{cert.hostname}</div>
                     <div className="text-sm text-gray-500 dark:text-white">Key: {cert.keySize} bits</div>

@@ -48,7 +48,7 @@ const AdminPanel = () => {
           </thead>
           <tbody className="bg-white dark:bg-slate-700 divide-y divide-gray-100">
             {users.map((user) => (
-              <tr key={user.id} className="hover:bg-gray-800 transition">
+              <tr key={user.id} className="hover:bg-gray-50 dark:hover:bg-gray-800 transition">
                 <td className="px-6 py-4 flex items-center space-x-3">
                   <div className="bg-[#eee] text-gray-700 rounded-full h-10 w-10 flex items-center justify-center font-bold uppercase">
                     {user.name.charAt(0)}

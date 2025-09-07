@@ -82,7 +82,7 @@ const Dashboard = () => {
   ];
 
   return (
-    <div className="space-y-6 bg-gray-50 dark:bg-gray-900">
+    <div className="space-y-6 bg-gray-100 dark:bg-gray-900">
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between">
         <div>
@@ -209,7 +209,7 @@ const Dashboard = () => {
             </thead>
             <tbody className="bg-white dark:bg-slate-700  divide-y divide-gray-100">
               {recentCertificates.map((cert) => (
-                <tr key={cert.id} className="dark:hover:bg-gray-800">
+                <tr key={cert.id} className="hover:bg-gray-50 dark:hover:bg-gray-800">
                   <td className="px-6 py-4 whitespace-nowrap">
                     <div className="text-sm font-medium text-gray-900 dark:text-white">{cert.hostname}</div>
                     <div className="text-sm text-gray-500 dark:text-gray-50">Issued: {cert.issuedDate}</div>

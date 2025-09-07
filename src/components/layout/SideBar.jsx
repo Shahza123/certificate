@@ -7,7 +7,8 @@ import {
   CheckCircle, 
   Users, 
   Settings,
-  Shield
+  Shield,
+   LogOut
 } from "lucide-react";
 
 const SideBar = ({ isOpen, toggleSidebar }) => {
@@ -27,6 +28,12 @@ const SideBar = ({ isOpen, toggleSidebar }) => {
   const mockUser = {
     name: "Demo User",
     role: "ca-manager"
+  };
+
+  const handleLogout = () => {
+    localStorage.removeItem("authToken");
+    localStorage.removeItem("user");
+    window.location.href = "/login"; // or use navigate("/login") if using useNavigate
   };
 
   return (
@@ -52,7 +59,7 @@ const SideBar = ({ isOpen, toggleSidebar }) => {
       {/* Logo/Brand */}
       <div className={`${isOpen ? 'mt-16' : 'mt-5'} mb-8`}>
         <div className="flex items-center justify-center">
-          <div className="p-2 bg-blue-600 rounded-lg">
+          <div className="p-2 bg-blue-600 rounded-lg ml-2">
             <Shield className="w-6 h-6 text-gray-900 dark:text-gray-50" />
           </div>
           {isOpen && (
@@ -65,15 +72,15 @@ const SideBar = ({ isOpen, toggleSidebar }) => {
 
       {/* User Info */}
       <div className={`${isOpen ? 'w-full px-4' : 'w-full'} mb-6`}>
-        <div className={`${isOpen ? 'p-3' : 'p-2'} bg-gray-700 rounded-lg`}>
+        <div className={`${isOpen ? 'p-3' : 'p-2'} bg-white dark:bg-gray-900 shadow-md rounded-lg`}>
           <div className="flex items-center">
             <div className="w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center text-gray-900 dark:text-gray-50 font-semibold text-sm">
               {mockUser.name.split(' ').map(word => word.charAt(0)).join('').toUpperCase().slice(0, 2)}
             </div>
             {isOpen && (
               <div className="ml-3">
-                <p className="text-sm font-medium text-gray-300">{mockUser.name}</p>
-                <p className="text-xs text-gray-300 capitalize">{mockUser.role}</p>
+                <p className="text-sm font-medium text-gray-900 dark:text-gray-50">{mockUser.name}</p>
+                <p className="text-xs text-gray-900 dark:text-gray-50 capitalize">{mockUser.role}</p>
               </div>
             )}
           </div>
@@ -87,8 +94,8 @@ const SideBar = ({ isOpen, toggleSidebar }) => {
             <li key={link.to} className="w-full">
               <Link
                 to={link.to}
-                className={`flex items-center gap-3 p-3 rounded-md hover:bg-gray-700 transition w-full ${
-                  location.pathname === link.to ? "bg-blue-600 text-gray-900 dark:text-gray-50" : "text-gray-900 dark:text-gray-50 hover:text-white"
+                className={`flex items-center gap-3 p-3 rounded-md hover:bg-zinc-200 dark:hover:bg-gray-700 transition w-full${
+                  location.pathname === link.to ? "bg-slate-600 dark:bg-slate-600 text-gray-900 dark:text-gray-50"  : "text-gray-900 dark:text-gray-50  hover:text-gray-900 dark:hover:text-white"
                 } ${isOpen ? 'justify-start' : 'justify-center'}`}
               >
                 <span className="w-5 h-5 flex items-center justify-center">{link.icon}</span>
@@ -99,13 +106,18 @@ const SideBar = ({ isOpen, toggleSidebar }) => {
         </ul>
       </nav>
 
-      {/* Demo Mode Indicator */}
+     {/* Logout Button */}
       <div className={`w-full ${isOpen ? 'px-4' : 'px-2'} pb-6`}>
-        <div className={`${isOpen ? 'p-3' : 'p-2'} bg-yellow-600 rounded-lg text-center`}>
-          {isOpen && (
-            <span className="text-xs font-medium text-gray-900 dark:text-gray-50">Demo Mode</span>
-          )}
-        </div>
+        <button
+          onClick={handleLogout}
+       className={`${isOpen ? "p-3" : "p-2"} flex items-center justify-center gap-2 
+      bg-red-600 hover:bg-red-700 text-white
+      dark:bg-gray-900 dark:hover:bg-gray-950 dark:text-gray-50
+      rounded-lg w-full transition`}
+  >
+          <LogOut size={18} />
+          {isOpen && <span className="text-xs font-medium">Logout</span>}
+        </button>
       </div>
     </div>
   );

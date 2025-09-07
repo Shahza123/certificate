@@ -114,10 +114,10 @@ const IssueCertificate = () => {
         <div className="inline-flex items-center justify-center w-16 h-16 bg-green-100 rounded-full mb-6">
           <CheckCircle className="w-8 h-8 text-green-600" />
         </div>
-        <h2 className="text-2xl font-bold text-gray-900 mb-4">
+        <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-50 mb-4">
           CA-Signed Certificate Generated Successfully!
         </h2>
-        <p className="text-gray-600 mb-8">
+        <p className="text-gray-600  dark:text-gray-50 mb-8">
           Your CA-signed SSL certificate for <strong>{formData.hostname}</strong> has been generated via STEP-CA service and is ready for use.
         </p>
         <div className="flex gap-4 justify-center">
@@ -145,16 +145,16 @@ const IssueCertificate = () => {
         <div className="inline-flex items-center justify-center w-16 h-16 bg-blue-100 rounded-full mb-4">
           <Shield className="w-8 h-8 text-blue-600" />
         </div>
-        <h1 className="text-3xl font-bold text-gray-900 mb-2">
+        <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-2">
           Generate CA-Signed SSL Certificate
         </h1>
-        <p className="text-gray-600">
+        <p className="text-gray-600 dark:text-gray-300">
           Create CA-signed certificates for specific hosts via STEP-CA service
         </p>
       </div>
 
       {/* Form */}
-      <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-8">
+      <div className="bg-white dark:bg-gray-800  text-gray-700 dark:text-gray-50 rounded-xl shadow-sm border border-gray-200 p-8">
         <form onSubmit={handleSubmit} className="space-y-6">
           {/* STEP-CA Service Configuration */}
           <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 mb-6">
@@ -180,7 +180,7 @@ const IssueCertificate = () => {
 
           {/* Predefined Host Selection */}
           <div className="space-y-2">
-            <label className="block text-sm font-medium text-gray-700">
+            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">
               Select Host Type <span className="text-red-500">*</span>
             </label>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
@@ -195,9 +195,9 @@ const IssueCertificate = () => {
                       : 'border-gray-300 hover:border-gray-400'
                   }`}
                 >
-                  <div className="flex items-center gap-2">
+                  <div className="flex items-center gap-2 ">
                     {host.icon}
-                    <span className="text-sm font-medium">{host.label}</span>
+                    <span className="text-sm font-medium ">{host.label}</span>
                   </div>
                 </button>
               ))}
@@ -229,8 +229,8 @@ const IssueCertificate = () => {
               required
             />
 
-            <div className="space-y-2">
-              <label className="block text-sm font-medium text-gray-700">
+            <div className="space-y-2 text-gray-700 dark:text-gray-300">
+              <label className="block text-sm font-medium">
                 STEP-CA Service Endpoint
               </label>
               <input
@@ -238,33 +238,33 @@ const IssueCertificate = () => {
                 name="stepCAService"
                 value={formData.stepCAService}
                 onChange={handleChange}
-                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                className="w-full  px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                 placeholder="localhost:9000"
               />
             </div>
           </div>
 
           {/* Automatic Key Size Display */}
-          <div className="bg-gray-50 border border-gray-200 rounded-lg p-4">
+          <div className="bg-gray-50 dark:bg-gray-900 border border-gray-200 rounded-lg p-4">
             <div className="flex items-center justify-between">
               <div>
-                <h4 className="font-medium text-gray-800">Key Size (Automatic)</h4>
-                <p className="text-sm text-gray-600">Standard 2048-bit RSA key for CA-signed certificates</p>
+                <h4 className="font-medium text-gray-800 dark:text-white">Key Size (Automatic)</h4>
+                <p className="text-sm text-gray-600 dark:text-gray-300">Standard 2048-bit RSA key for CA-signed certificates</p>
               </div>
               <div className="text-right">
                 <span className="text-lg font-bold text-blue-600">{getKeySize()} bits</span>
-                <p className="text-xs text-gray-500">RSA</p>
+                <p className="text-xs text-gray-500 dark:text-gray-300">RSA</p>
               </div>
             </div>
           </div>
 
           {/* Certificate Details Preview */}
-          <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
+          <div className="bg-blue-50 dark:bg-gray-900  border border-blue-200 rounded-lg p-4">
             <div className="flex items-start">
-              <FileText className="w-5 h-5 text-blue-600 mt-0.5 mr-3 flex-shrink-0" />
-              <div className="text-sm text-blue-800">
+              <FileText className="w-5 h-5 text-blue-600 dark:text-gray-100 mt-0.5 mr-3 flex-shrink-0" />
+              <div className="text-sm text-blue-800 dark:text-gray-50">
                 <p className="font-medium mb-1">Certificate Details:</p>
-                <ul className="space-y-1 text-blue-700">
+                <ul className="space-y-1 text-blue-700 dark:text-gray-200">
                   <li>• Host: <strong>{formData.hostname || 'Not specified'}</strong></li>
                   <li>• Type: <strong>CA-Signed (STEP-CA)</strong></li>
                   <li>• Validity: {formData.validityPeriod.replace('-', ' ')}</li>
@@ -303,20 +303,20 @@ const IssueCertificate = () => {
       </div>
 
       {/* Prototype Requirements Section */}
-      <div className="mt-8 bg-green-50 rounded-xl p-6">
-        <h3 className="text-lg font-semibold text-green-900 mb-4">Prototype Requirements Met</h3>
+      <div className="mt-8 bg-green-50 dark:bg-gray-700 rounded-xl p-6">
+        <h3 className="text-lg font-semibold text-green-900 dark:text-white mb-4">Prototype Requirements Met</h3>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div>
-            <h4 className="font-medium text-green-800 mb-2">STEP-CA Service Integration:</h4>
-            <ul className="text-sm text-green-700 space-y-1">
+            <h4 className="font-medium text-green-800 dark:text-gray-100 mb-2">STEP-CA Service Integration:</h4>
+            <ul className="text-sm text-green-700 dark:text-gray-100 space-y-1">
               <li>✅ Linux OS deployment ready</li>
               <li>✅ Service endpoint configuration</li>
               <li>✅ CA-signed certificate generation</li>
             </ul>
           </div>
           <div>
-            <h4 className="font-medium text-green-800 mb-2">Required Hosts Support:</h4>
-            <ul className="text-sm text-green-700 space-y-1">
+            <h4 className="font-medium text-green-800 dark:text-gray-100 mb-2">Required Hosts Support:</h4>
+            <ul className="text-sm text-green-700 dark:text-gray-100 space-y-1">
               <li>✅ IP Addresses (e.g., 192.168.1.100)</li>
               <li>✅ 127.0.0.1 (localhost)</li>
               <li>✅ wacman.com (domain)</li>
@@ -326,20 +326,20 @@ const IssueCertificate = () => {
       </div>
 
       {/* Help Section */}
-      <div className="mt-8 bg-gray-50 rounded-xl p-6">
-        <h3 className="text-lg font-semibold text-gray-900 mb-4">Need Help?</h3>
+      <div className="mt-8 bg-gray-50 dark:bg-gray-700 rounded-xl p-6">
+        <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">Need Help?</h3>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div>
-            <h4 className="font-medium text-gray-800 mb-2">Supported Hostname Formats:</h4>
-            <ul className="text-sm text-gray-600 space-y-1">
+            <h4 className="font-medium text-gray-800 dark:text-gray-100 mb-2">Supported Hostname Formats:</h4>
+            <ul className="text-sm text-gray-600 dark:text-gray-300 space-y-1">
               <li>• IP Addresses: 192.168.1.100, 127.0.0.1</li>
               <li>• Domain Names: wacman.com, example.org</li>
               <li>• Localhost: localhost</li>
             </ul>
           </div>
           <div>
-            <h4 className="font-medium text-gray-800 mb-2">CA-Signed Certificates:</h4>
-            <ul className="text-sm text-gray-600 space-y-1">
+            <h4 className="font-medium text-gray-800 dark:text-gray-100 mb-2">CA-Signed Certificates:</h4>
+            <ul className="text-sm text-gray-600 dark:text-gray-300 space-y-1">
               <li>• <strong>Type:</strong> Always CA-signed via STEP-CA</li>
               <li>• <strong>Key Size:</strong> Automatically 2048 bits</li>
               <li>• <strong>Security:</strong> Professional-grade certificates</li>
