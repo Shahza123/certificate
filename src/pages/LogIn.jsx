@@ -24,8 +24,8 @@ const LogIn = () => {
         </div>
 
         {/* Login Form */}
-        <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-xl border border-gray-100 dark:border-gray-900 p-8">
-          <form className="space-y-6">
+        <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-xl border border-gray-100 dark:border-gray-900 p-12">
+          <form className="space-y-10">
             <div className="space-y-2">
               <label className="block text-sm font-medium text-gray-700 dark:text-gray-50">
                 Username <span className="text-red-500">*</span>
@@ -92,14 +92,14 @@ const LogIn = () => {
           </form>
 
           {/* Demo Credentials */}
-          <div className="mt-6 p-4 bg-blue-50 dark:bg-gray-700 rounded-lg border border-blue-200 dark:border-gray-700">
+          {/* <div className="mt-6 p-4 bg-blue-50 dark:bg-gray-700 rounded-lg border border-blue-200 dark:border-gray-700">
             <h3 className="text-sm font-medium text-blue-800 dark:text-gray-100 mb-2">Demo Mode:</h3>
             <div className="space-y-1 text-xs text-blue-700 dark:text-gray-300">
               <div>• This is a static UI demonstration</div>
               <div>• Click "Sign In (Demo)" to access the system</div>
               <div>• No actual authentication required</div>
             </div>
-          </div>
+          </div> */}
 
           {/* Sign Up Link */}
           <div className="mt-6 text-center">

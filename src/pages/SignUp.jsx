@@ -164,14 +164,14 @@ const SignUp = () => {
           </form>
 
           {/* Demo Info */}
-          <div className="mt-6 p-4 bg-blue-50 dark:bg-gray-700 rounded-lg border border-blue-200 dark:border-gray-700">
+          {/* <div className="mt-6 p-4 bg-blue-50 dark:bg-gray-700 rounded-lg border border-blue-200 dark:border-gray-700">
             <h3 className="text-sm font-medium text-blue-800 dark:text-gray-100 mb-2">Demo Mode:</h3>
             <div className="space-y-1 text-xs text-blue-700 dark:text-gray-300">
               <div>• This is a static UI demonstration</div>
               <div>• Click "Create Account (Demo)" to access the system</div>
               <div>• No actual account creation required</div>
             </div>
-          </div>
+          </div> */}
 
           {/* Login Link */}
           <div className="mt-6 text-center">

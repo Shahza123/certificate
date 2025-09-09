@@ -39,8 +39,7 @@ function DashboardLayout() {
             <Route path="validation" element={<ViewCertificate />} />
             <Route path="user-management" element={<AdminPanel />} />
             <Route path="logout" element={<Dashboard />} />
-            
-            {/* Legacy routes for backward compatibility */}
+        
             
           </Routes>
         </main>
