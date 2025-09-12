@@ -40,8 +40,14 @@ INSTALLED_APPS = [
     'rest_framework',
     'rest_framework_simplejwt',
     'corsheaders',
-    'auths',
-    'certificates',
+    'mongoengine',
+    'api', 
+    
+    
+      'auths',         # ✅ re-enable
+    'certificates',  # Our clean MongoDB API
+    # 'auths',  # Disabled to avoid conflicts
+    # 'certificates',  # Disabled to avoid conflicts
 ]
 
 MIDDLEWARE = [
@@ -82,12 +88,43 @@ WSGI_APPLICATION = 'core.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
+# MongoDB Configuration
+import mongoengine
+
+# MongoDB connection settings
+MONGODB_SETTINGS = {
+    'host': 'mongodb+srv://ms2182580_db_user:shahzad%402182@cluster0.qxzdrpg.mongodb.net/wcaman_db?retryWrites=true&w=majority&appName=Cluster0',
+    'db': 'wcaman_db',
+    'connectTimeoutMS': 30000,
+    'serverSelectionTimeoutMS': 30000,
+    'alias': 'default'
+}
+
+# For Django admin and auth (keeping SQLite for Django's built-in features)
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'NAME': BASE_DIR / 'admin_db.sqlite3',
     }
 }
+# Connect to MongoDB
+try:
+    mongoengine.connect(
+        alias='default',
+        host=MONGODB_SETTINGS['host'],
+        db=MONGODB_SETTINGS['db'],
+        connectTimeoutMS=MONGODB_SETTINGS['connectTimeoutMS'],
+        serverSelectionTimeoutMS=MONGODB_SETTINGS['serverSelectionTimeoutMS']
+    )
+    print("✅ MongoDB connected successfully!")
+except Exception as e:
+    print(f"❌ MongoDB connection failed: {e}")
+    # Try alternative connection method
+    try:
+        mongoengine.connect('wcaman_db', host=MONGODB_SETTINGS['host'])
+        print("✅ MongoDB connected with alternative method!")
+    except Exception as e2:
+        print(f"❌ Alternative MongoDB connection also failed: {e2}")
 
 
 # Password validation
@@ -131,17 +168,18 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-AUTH_USER_MODEL = 'auths.User'
+# AUTH_USER_MODEL = 'auths.User'  # Disabled for MongoDB
+# Using MongoEngine User model instead
 
 
-REST_FRAMEWORK = {
-    
-    'DEFAULT_AUTHENTICATION_CLASSES': (
-        
-        'rest_framework_simplejwt.authentication.JWTAuthentication',
-    )
-    
-}
+# REST_FRAMEWORK = {
+#     'DEFAULT_AUTHENTICATION_CLASSES': (
+#         'auths.jwt_auth.MongoJWTAuthentication',
+#     ),
+#     'DEFAULT_PERMISSION_CLASSES': [
+#         'rest_framework.permissions.IsAuthenticated',
+#     ],
+# }
 
 from datetime import timedelta
 
@@ -190,15 +228,33 @@ CERTIFICATE_DEFAULT_KEY_SIZE = 2048
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,
+    'formatters': {
+        'verbose': {
+            'format': '{levelname} {asctime} {module} {message}',
+            'style': '{',
+        },
+        'simple': {
+            'format': '{levelname} {message}',
+            'style': '{',
+        },
+    },
     'handlers': {
         'file': {
             'level': 'INFO',
             'class': 'logging.FileHandler',
             'filename': BASE_DIR / 'certificates.log',
+            'formatter': 'verbose',
         },
         'console': {
             'level': 'DEBUG',
             'class': 'logging.StreamHandler',
+            'formatter': 'simple',
+        },
+        'audit_file': {
+            'level': 'INFO',
+            'class': 'logging.FileHandler',
+            'filename': BASE_DIR / 'audit.log',
+            'formatter': 'verbose',
         },
     },
     'loggers': {
@@ -207,5 +263,60 @@ LOGGING = {
             'level': 'INFO',
             'propagate': True,
         },
+        'auths': {
+            'handlers': ['audit_file', 'console'],
+            'level': 'INFO',
+            'propagate': True,
+        },
+        'django': {
+            'handlers': ['console'],
+            'level': 'INFO',
+            'propagate': True,
+        },
     },
 }
+
+# Email Configuration (for notifications)
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'  # For development
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = ''  # Set in production
+EMAIL_HOST_PASSWORD = ''  # Set in production
+DEFAULT_FROM_EMAIL = 'WCAMAN Certificate Manager <noreply@wcaman.local>'
+
+# Notification Settings
+NOTIFICATION_SETTINGS = {
+    'CERTIFICATE_EXPIRY_DAYS': [30, 7, 1],  # Days before expiry to send notifications
+    'EMAIL_NOTIFICATIONS': True,
+    'WEBHOOK_NOTIFICATIONS': True,
+    'MAX_RETRY_ATTEMPTS': 3,
+}
+
+# Security Settings
+SECURITY_SETTINGS = {
+    'MAX_LOGIN_ATTEMPTS': 5,
+    'ACCOUNT_LOCKOUT_DURATION': 30,  # minutes
+    'PASSWORD_RESET_TIMEOUT': 900,  # 15 minutes
+    'SESSION_TIMEOUT': 3600,  # 1 hour
+}
+
+# Certificate Deployment Settings
+DEPLOYMENT_SETTINGS = {
+    'SSH_TIMEOUT': 60,  # seconds
+    'API_TIMEOUT': 30,  # seconds
+    'WEBHOOK_TIMEOUT': 10,  # seconds
+    'MAX_PARALLEL_DEPLOYMENTS': 5,
+}
+
+# ACME Protocol Settings
+ACME_SETTINGS = {
+    'DIRECTORY_URL': 'https://acme-v02.api.letsencrypt.org/directory',  # Let's Encrypt production
+    'STAGING_DIRECTORY_URL': 'https://acme-staging-v02.api.letsencrypt.org/directory',  # Let's Encrypt staging
+    'DEFAULT_KEY_TYPE': 'RSA',
+    'DEFAULT_KEY_SIZE': 2048,
+}
+
+# Media files (for user avatars, etc.)
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR / 'media'

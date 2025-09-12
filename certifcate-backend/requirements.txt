@@ -1,0 +1,36 @@
+# Core Django dependencies
+Django==5.2.6
+djangorestframework==3.16.1
+djangorestframework-simplejwt==5.5.1
+django-cors-headers==4.8.0
+
+# Cryptography and certificate management
+cryptography==42.0.8
+PyJWT==2.10.1
+
+# HTTP requests for webhook and API deployments
+requests==2.31.0
+
+# SSH connections for certificate deployment
+paramiko==3.4.0
+
+# Async task processing (optional for future enhancements)
+celery==5.3.4
+redis==5.0.1
+
+# Database drivers (choose based on your database)
+# psycopg2-binary==2.9.9  # PostgreSQL
+# mysqlclient==2.2.4      # MySQL
+
+# MongoDB drivers
+mongoengine==0.29.1
+pymongo==3.11.4
+
+# Development and testing
+pytest==7.4.4
+pytest-django==4.8.0
+
+# Optional: For advanced features
+# python-ldap==3.4.3      # LDAP integration
+# django-oauth-toolkit==1.7.1  # OAuth2 provider
+# python-dotenv==1.0.0    # Environment variables

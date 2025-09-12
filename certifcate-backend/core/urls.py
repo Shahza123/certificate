@@ -19,6 +19,11 @@ from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/auth/', include('auths.urls')),
-    path('api/certificates/', include('certificates.urls')),
+    
+    # MongoDB API (Clean, no conflicts)
+    path('api/', include('api.urls')),
+    
+    # Legacy Django ORM endpoints (disabled for now)
+    # path('api/auth/', include('auths.urls')),
+    # path('api/certificates/', include('certificates.urls')),
 ]
